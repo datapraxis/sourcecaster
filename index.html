@@ -51,13 +51,13 @@
                     <p><i>Sometimes you want to take text data out of searchable pdfs, so you can begin to use text analysis methods and tools.</i></p>
 
           <p>This will convert all text searchable pdfs in a folder to text files.</p>
-                    <p><code>for file in *.pdf; do pdftotext "$file" "$file.txt"; done</code></p>
+                    <p><code>for file in *.pdf; do pdftotext "$file" "${file%.*}.txt"; done</code></p>
 
           <dl>
             <dt>for file in</dt><dd>for every file in the folder</dd>
             <dt>*.pdf</dt><dd>that ends in the extension pdf</dd>
             <dt>do pdftotext</dt><dd>use the pdftotext program to extract OCR from each pdf</dd>
-            <dt>"$file" "$file.txt"</dt><dd>copy the filename from each pdf to the new text files</dd>
+            <dt>"$file" "${file%.*}.txt"</dt><dd>copy the filename from each pdf to the new text files without the .pdf extension of the original filename (%.*)</dd>
           </dl>
         </div>
       </div>
